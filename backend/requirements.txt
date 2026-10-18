@@ -1,0 +1,5 @@
+fastapi
+uvicorn
+psycopg[binary]
+pwdlib[argon2]
+python-dotenv
