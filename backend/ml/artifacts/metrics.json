@@ -1,0 +1,71 @@
+{
+  "model_name": "ResQ Resource Demand Regression Engine",
+  "model_version": "historical-usgs-v1.0",
+  "training_date_utc": "2026-10-27T12:57:34.173137+00:00",
+  "data_source": "REAL HISTORICAL USGS EVENTS (2015-2024) - Relief demand computed via Sphere humanitarian standards",
+  "split_counts": {
+    "train": 1200,
+    "calibration": 400,
+    "test": 400,
+    "total": 2000
+  },
+  "features": [
+    "disaster_type",
+    "affected_population",
+    "severity",
+    "affected_buildings"
+  ],
+  "conformal_interval_settings": {
+    "nominal_confidence": 0.9,
+    "alpha": 0.1,
+    "calibration_samples": 400,
+    "quantile_level_fraction": 0.9025,
+    "interval_label": "empirical prediction interval, nominal 90%, calibrated on real historical USGS data with Sphere standards; not a validated real-world confidence level"
+  },
+  "resources": {
+    "food_packets": {
+      "unit": "packets (1 packet = 1 person-day meal)",
+      "model_mae": 8712.01,
+      "model_rmse": 12713.14,
+      "naive_baseline_mae": 57623.83,
+      "naive_baseline_rmse": 91973.36,
+      "conformal_quantile_q_hat": 15835.41,
+      "test_empirical_coverage": 0.8625,
+      "model_file": "model_food_packets.joblib",
+      "quantile_file": "conformal_quantile_food_packets.joblib"
+    },
+    "water_litres": {
+      "unit": "litres (Sphere standard: drinking, cooking, hygiene)",
+      "model_mae": 47408.86,
+      "model_rmse": 74868.07,
+      "naive_baseline_mae": 307091.64,
+      "naive_baseline_rmse": 483979.51,
+      "conformal_quantile_q_hat": 93024.82,
+      "test_empirical_coverage": 0.9025,
+      "model_file": "model_water_litres.joblib",
+      "quantile_file": "conformal_quantile_water_litres.joblib"
+    },
+    "medical_kits": {
+      "unit": "kits (standard emergency/trauma first-aid kits)",
+      "model_mae": 1.83,
+      "model_rmse": 2.63,
+      "naive_baseline_mae": 10.94,
+      "naive_baseline_rmse": 17.93,
+      "conformal_quantile_q_hat": 4.03,
+      "test_empirical_coverage": 0.915,
+      "model_file": "model_medical_kits.joblib",
+      "quantile_file": "conformal_quantile_medical_kits.joblib"
+    },
+    "shelter_capacity_persons": {
+      "unit": "people (displaced persons requiring shelter space)",
+      "model_mae": 108.11,
+      "model_rmse": 164.66,
+      "naive_baseline_mae": 1026.1,
+      "naive_baseline_rmse": 1638.35,
+      "conformal_quantile_q_hat": 217.49,
+      "test_empirical_coverage": 0.875,
+      "model_file": "model_shelter_capacity_persons.joblib",
+      "quantile_file": "conformal_quantile_shelter_capacity_persons.joblib"
+    }
+  }
+}
